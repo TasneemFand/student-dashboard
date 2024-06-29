@@ -25,6 +25,7 @@ const StudentsTable = () => {
 
   const [data, setData] = useState<TMappedStudent[]>([]);
 
+
   useEffect(() => {
     if (studentsData) {
       setData(

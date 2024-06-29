@@ -5,7 +5,9 @@ import {
   IconButton,
   InputAdornment,
   OutlinedInput,
+  Theme,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { useTranslate } from "../../../../../../locales";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,10 +16,16 @@ import { PickerDate } from "./PickerDate";
 
 export const Filters = () => {
   const { t } = useTranslate();
+  const isLaptop = useMediaQuery<Theme>((theme) =>
+    theme.breakpoints.down("lg")
+  );
+  const isMobile = useMediaQuery<Theme>((theme) =>
+    theme.breakpoints.down("sm")
+  );
 
   return (
-    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-      <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+    <Box sx={{ display: "flex", gap: 2, alignItems: isLaptop ? "flex-start" : "center", flexDirection: isLaptop ? "column" : "row" }}>
+      <Box sx={{ display: "flex", gap: 1, alignItems: "center",  }}>
         <img alt="filter by" src={"/dashboard/students/assests/dashborad/Filter.svg"} />
         <Typography
           sx={{
@@ -32,7 +40,7 @@ export const Filters = () => {
           sx={{
             backgroundColor: "rgba(245, 245, 245, 1)",
             borderRadius: "10px",
-            width: "350px",
+            width: isMobile ? "250px" : "350px",
             maxWidth: "350px",
           }}
           endAdornment={
@@ -51,6 +59,7 @@ export const Filters = () => {
           borderRadius: "10px",
           display: "flex",
           height: "56px",
+          maxWidth: isMobile? "250px" : "100%",
           border: "1px solid rgb(188 188 188)",
         }}
       >
