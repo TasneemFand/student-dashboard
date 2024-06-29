@@ -1,11 +1,11 @@
 import { Outlet, createBrowserRouter } from "react-router-dom";
-import { GuestGuard } from "../auth/guard";
+import { AuthGuard, GuestGuard } from "../auth/guard";
 import { Suspense } from "react";
 import { SplashScreen } from "../components/loading-screen";
-
+import { DashboardLayout } from "../pages/dashboard/layout";
 
 const authJwt = {
-  path: 'jwt',
+  path: "jwt",
   element: (
     <GuestGuard>
       <Suspense fallback={<SplashScreen />}>
@@ -15,9 +15,9 @@ const authJwt = {
   ),
   children: [
     {
-      path: 'login',
+      path: "login",
       lazy: async () => {
-        const Page = (await import('../pages/auth/login/page')).Login;
+        const Page = (await import("../pages/auth/login/page")).Login;
 
         return {
           element: <Page />,
@@ -28,21 +28,33 @@ const authJwt = {
 };
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        // element: (
-        //   <MainLayout>
-        //     <HomePage />
-        //   </MainLayout>
-        // ),
-      },
-  
-      // Auth routes
+  {
+    path: "dashboard",
+    element: (
+      <AuthGuard>
+        <DashboardLayout />
+      </AuthGuard>
+    ),
+    children: [
       {
-        path: 'auth',
-        children: [authJwt],
-      },
+        path: "students",
+        lazy: async () => {
+          const Page = (await import("../pages/dashboard/students/page")).StudentsPage;
 
-      // // No match 404
-      // { path: '*', element: <Navigate to="/404" replace /> },
+          return {
+            element: <Page />,
+          };
+        },
+      },
+    ],
+  },
+
+  // Auth routes
+  {
+    path: "auth",
+    children: [authJwt],
+  },
+
+  // // No match 404
+  // { path: '*', element: <Navigate to="/404" replace /> },
 ]);
