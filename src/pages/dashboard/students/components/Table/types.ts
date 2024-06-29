@@ -3,6 +3,7 @@ export type TStudent = {
     firstName?: string;
     lastName?: string;
     birthDate: string;
+    city?: string;
     grade: {
         id: string;
         translations?: {

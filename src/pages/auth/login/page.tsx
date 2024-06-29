@@ -18,7 +18,7 @@ export const Login = () => {
         <LangSelect />
         <img
           loading="lazy"
-          src={"/assests/login/login1.svg"}
+          src={"/dashboard/students/assests/login/login1.svg"}
           alt="login"
           width={"100%"}
         />
@@ -36,7 +36,7 @@ export const Login = () => {
         }}
       >
         <Box sx={{ backgroundColor: "white",paddingY: 5, paddingX: 5, borderRadius: "6px", maxWidth: "500px"}}>
-           <img src={"/assests/login/loginText.svg"} alt="login" style={{ marginBottom: "24px", width: "80px"}}/>
+           <img src={"/dashboard/students/assests/login/loginText.svg"} alt="login" style={{ marginBottom: "24px", width: "80px"}}/>
           <LoginForm />
         </Box>
       </Box>

@@ -18,7 +18,7 @@ export const Filters = () => {
   return (
     <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
       <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-        <img alt="filter by" src={"/assests/dashborad/Filter.svg"} />
+        <img alt="filter by" src={"/dashboard/students/assests/dashborad/Filter.svg"} />
         <Typography
           sx={{
             color: "rgba(31, 123, 244, 1)",

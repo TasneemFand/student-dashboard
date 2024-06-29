@@ -21,6 +21,14 @@
   "country": "Country",
   "city": "City",
   "Mobile": "Mobile Number",
-  "Notes": "Notes"
-
+  "Notes": "Notes",
+  "cancel": "Cancel",
+  "addButton": "Add",
+  "addStudent": "Add student",
+  "editStudent": "Modify Student",
+  "Save": "Save",
+  "delete": "Delete",
+  "action": "This action cannot be undone.",
+  "paragraphDelete": "Are you sure you want to delete this student's information?",
+  "sure": "Are you sure?"
 }

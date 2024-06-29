@@ -5,41 +5,60 @@ import {
   useMaterialReactTable,
   MRT_SortingState,
 } from "material-react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useColumns } from "./tableCols";
 import { useGetStudents } from "./hooks/useGetStudents";
 import { useLocales } from "../../../../../locales";
 import { TMappedStudent } from "./types";
-import { MRT_Localization_EN } from 'material-react-table/locales/en';
-import { MRT_Localization_AR } from 'material-react-table/src/locales/ar';
+import { MRT_Localization_EN } from "material-react-table/locales/en";
+import { MRT_Localization_AR } from "material-react-table/src/locales/ar";
+import { useNavigate } from "react-router-dom";
 
-export const StudentsTable = () => {
+const StudentsTable = () => {
   const columns = useColumns();
   const { studentsData, isLoading } = useGetStudents();
 
   const [sorting, setSorting] = useState<MRT_SortingState>([]);
 
   const { currentLang } = useLocales();
+  const navigate = useNavigate();
+
+  const [data, setData] = useState<TMappedStudent[]>([]);
+
+  useEffect(() => {
+    if (studentsData) {
+      setData(
+        studentsData.map((item) => ({
+          ...item,
+          grade:
+            currentLang.value === "en"
+              ? item.grade.translations?.[0]?.name || ""
+              : item.grade.translations?.[1]?.name || "",
+          gender:
+            currentLang.value === "en"
+              ? item.gender.translations?.[1]?.name || ""
+              : item.gender.translations?.[0]?.name || "",
+        }))
+      );
+    } else setData([]);
+  }, [currentLang.value, isLoading, studentsData]);
 
   const table = useMaterialReactTable({
     columns,
-    data: studentsData?.map((item) => ({
-      ...item,
-      grade: currentLang.value === "en" ? item.grade.translations?.[0]?.name : item.grade.translations?.[1]?.name,
-      gender: currentLang.value === "en" ? item.gender.translations?.[1]?.name : item.gender.translations?.[0]?.name,
-    })) as unknown as TMappedStudent[] ?? [],
+    data,
     /** basics */
     layoutMode: "semantic",
     enablePagination: true,
     muiPaginationProps: {
-      color: 'primary',
-      shape: 'rounded',
+      color: "primary",
+      shape: "rounded",
       showRowsPerPage: false,
-      variant: 'outlined',
+      variant: "outlined",
     },
     columnResizeDirection: currentLang.value === "en" ? "ltr" : "rtl",
-    localization: currentLang.value === "en" ?  MRT_Localization_EN : MRT_Localization_AR,
-    paginationDisplayMode: 'pages',
+    localization:
+      currentLang.value === "en" ? MRT_Localization_EN : MRT_Localization_AR,
+    paginationDisplayMode: "pages",
     enableColumnActions: false,
     enableStickyHeader: true,
     displayColumnDefOptions: {
@@ -66,21 +85,17 @@ export const StudentsTable = () => {
     /** row actions */
     enableRowActions: true,
     positionActionsColumn: "last",
-    renderRowActions: () => (
+    renderRowActions: ({row}) => (
       <Box sx={{ display: "flex", flexWrap: "nowrap" }}>
         <Tooltip title="Delete">
-          <IconButton
-            size="small"
-          >
-            <img src={"/assests/dashborad/bin.svg"}/>
+          <IconButton size="small" onClick={() => navigate(`delete/${row.original.id}`)}>
+            <img src={"/dashboard/students/assests/dashborad/bin.svg"} />
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit">
-          <IconButton
-            size="small"
-          >
-            <img src={"/assests/dashborad/pencil.svg"}/>
-            </IconButton>
+          <IconButton size="small" onClick={() => navigate(`edit/${row.original.id}`)}>
+            <img src={"/dashboard/students/assests/dashborad/pencil.svg"} />
+          </IconButton>
         </Tooltip>
       </Box>
     ),
@@ -124,3 +139,5 @@ export const StudentsTable = () => {
     </Box>
   );
 };
+
+export default StudentsTable;

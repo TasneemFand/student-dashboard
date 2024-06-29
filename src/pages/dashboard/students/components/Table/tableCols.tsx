@@ -56,6 +56,6 @@ export const useColumns = () => {
         header: t("Notes")
       }
     ],
-    [t]
+    []
   );
 };

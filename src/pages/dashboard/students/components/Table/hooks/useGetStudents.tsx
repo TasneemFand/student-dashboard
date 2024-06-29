@@ -7,6 +7,7 @@ export const useGetStudents = () => {
     isLoading,
     isRefetching,
     isError,
+    refetch,
   } = useQuery({
     ...StudentsTableQuery(),
   });
@@ -16,5 +17,6 @@ export const useGetStudents = () => {
     isLoading,
     isError,
     isRefetching,
+    refetch
   };
 };

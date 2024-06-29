@@ -32,19 +32,60 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <AuthGuard>
-        <DashboardLayout />
+        <Suspense fallback={<SplashScreen />}>
+          <DashboardLayout />
+        </Suspense>
       </AuthGuard>
     ),
     children: [
       {
         path: "students",
         lazy: async () => {
-          const Page = (await import("../pages/dashboard/students/page")).StudentsPage;
+          const Page = (await import("../pages/dashboard/students/page"))
+            .StudentsPage;
 
           return {
             element: <Page />,
           };
         },
+        children: [
+          {
+            path: "add",
+            lazy: async () => {
+              const Page = (
+                await import("../pages/dashboard/students/Add/page")
+              ).AddDialog;
+
+              return {
+                element: <Page type="add" />,
+              };
+            },
+          },
+          {
+            path: "edit/:id",
+            lazy: async () => {
+              const Page = (
+                await import("../pages/dashboard/students/Add/page")
+              ).AddDialog;
+
+              return {
+                element: <Page type="edit" />,
+              };
+            },
+          },
+          {
+            path: "delete/:id",
+            lazy: async () => {
+              const Page = (
+                await import("../pages/dashboard/students/Delete/page")
+              ).DeleteDialog;
+
+              return {
+                element: <Page/>,
+              };
+            },
+          },
+        ],
       },
     ],
   },

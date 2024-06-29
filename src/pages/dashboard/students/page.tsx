@@ -1,9 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useTranslate } from "../../../locales";
-import { StudentsTable } from "./components/Table";
+import { Outlet, useNavigate } from "react-router-dom";
+import { Suspense, lazy } from "react";
+
+const Table = lazy(() => import("./components/Table/index"));
 
 export const StudentsPage = () => {
   const { t } = useTranslate();
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -26,7 +30,10 @@ export const StudentsPage = () => {
           {t("studentsData")}
         </Typography>
         <Button
-          endIcon={<img src={"/assests/dashborad/add.svg"} />}
+          endIcon={
+            <img src={"/dashboard/students/assests/dashborad/add.svg"} />
+          }
+          onClick={() => navigate("add")}
           sx={{
             color: "white",
             backgroundColor: "rgba(31, 123, 244, 1)",
@@ -35,14 +42,17 @@ export const StudentsPage = () => {
             padding: 2,
             fontWeight: 400,
             "&:hover": {
-                backgroundColor: "rgba(31, 123, 244, 1)"
-            }
+              backgroundColor: "rgba(31, 123, 244, 1)",
+            },
           }}
         >
           {t("add")}
         </Button>
       </Box>
-      <StudentsTable/>
+      <Suspense fallback={null}>
+        <Table />
+      </Suspense>
+      <Outlet />
     </Box>
   );
 };
