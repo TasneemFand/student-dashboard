@@ -9,6 +9,7 @@ import { palette } from './palette';
 // options
 import RTL from './options/right-to-left';
 import { useSettingsContext } from '../settings';
+import { typography } from './typography';
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ export default function ThemeProvider({ children }: Props) {
         ...palette(),
       },
       direction: settings.themeDirection,
+      typography
     }),
     [
       settings.themeMode,

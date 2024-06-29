@@ -1,0 +1,17 @@
+.menu {
+    color: black;
+    font-size: 1.0625rem;
+    text-decoration: none;
+    padding: 5px 14px;
+    padding-left: 0;
+  }
+  
+  .menu:hover {
+    text-decoration: underline;
+  }
+  
+  #menuSide a.active {
+    font-weight: 500;
+    text-decoration: underline;
+  }
+  

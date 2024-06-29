@@ -7,6 +7,7 @@ import { useAuthContext } from "../../../../auth/hooks";
 import { useRouter, useSearchParams } from "../../../../routes/hooks";
 import { PATH_AFTER_LOGIN } from "../../../../config-global";
 import toast, { Toaster } from "react-hot-toast";
+import { useTranslate } from "../../../../locales";
 
 export const LoginForm = () => {
   const {
@@ -30,6 +31,9 @@ export const LoginForm = () => {
 
   const returnTo = searchParams.get("returnTo");
 
+  const { t } = useTranslate();
+
+
   const onSubmit: SubmitHandler<TLoginForm> = async (values) => {
     try {
       await login?.(values.userName, values.password);
@@ -48,7 +52,7 @@ export const LoginForm = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <InputLabel htmlFor="User Name" sx={{ marginBottom: 1 }}>
-            User Name
+            {t('userName')}
           </InputLabel>
           <TextFieldController
             id="name"
@@ -60,7 +64,7 @@ export const LoginForm = () => {
         </Grid>
         <Grid item xs={12}>
           <InputLabel htmlFor="Password" sx={{ marginBottom: 1 }}>
-            Password
+            {t('password')}
           </InputLabel>
           <TextFieldController
             id="Password"
@@ -79,7 +83,7 @@ export const LoginForm = () => {
           disabled={isSubmitting || !isDirty}
           variant="contained"
         >
-          Sign In
+          {t('signIn')}
         </Button>
       </Box>
       <Toaster position="top-center" reverseOrder={false} />
