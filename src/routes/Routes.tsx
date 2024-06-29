@@ -32,9 +32,7 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <AuthGuard>
-        <Suspense fallback={<SplashScreen />}>
-          <DashboardLayout />
-        </Suspense>
+        <DashboardLayout />
       </AuthGuard>
     ),
     children: [
@@ -81,7 +79,7 @@ export const router = createBrowserRouter([
               ).DeleteDialog;
 
               return {
-                element: <Page/>,
+                element: <Page />,
               };
             },
           },

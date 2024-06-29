@@ -8,10 +8,8 @@ import {
 } from "@mui/material";
 import { useTranslate } from "../../../locales";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Suspense, lazy } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-
-const Table = lazy(() => import("./components/Table/index"));
+import StudentsTable from "./components/Table";
 
 export const StudentsPage = () => {
   const { t } = useTranslate();
@@ -31,7 +29,13 @@ export const StudentsPage = () => {
         paddingY: 2,
       }}
     >
-      <Box sx={{ display: "flex", justifyContent: "space-between" , alignItems: "center"}}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Typography
           sx={{
             fontWeight: 500,
@@ -66,9 +70,7 @@ export const StudentsPage = () => {
           </Button>
         )}
       </Box>
-      <Suspense fallback={null}>
-        <Table />
-      </Suspense>
+      <StudentsTable />
       <Outlet />
     </Box>
   );

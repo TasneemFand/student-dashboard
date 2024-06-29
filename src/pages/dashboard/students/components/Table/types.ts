@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export type TStudent = {
     id: string;
     firstName?: string;
@@ -35,4 +37,12 @@ export type TMappedStudent = {
     phone?: string;
     remarks?: string
 
+}
+
+export type TFilter = {
+    date?: {
+        op: string;
+        value: Dayjs | undefined;
+    },
+    searchByName?: string;
 }
