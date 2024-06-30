@@ -46,7 +46,7 @@ export const DeleteDialog = () => {
             height: "147px",
             borderEndEndRadius: "11px",
             borderEndStartRadius: "11px",
-            width: "600px",
+            width: "100%",
             backgroundColor: "rgba(243, 66, 53, 1)",
             alignItems: "center",
             display: "flex",

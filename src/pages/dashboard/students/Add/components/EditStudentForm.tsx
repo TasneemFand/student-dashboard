@@ -74,9 +74,9 @@ export const EditStudentForm = ({ handleClose }: TProps) => {
 
   if (isLoading) {
     return (
-      <Box sx={{width: "600px", height: "639.2px", display: "flex", justifyContent: "center"}}>
-        <CircularProgress color="primary" />
-      </Box>
+    <Box sx={{width: "600px", maxWidth: "100%", height: "639.2px", alignItems: "flex-start", display: "flex", justifyContent: "center"}}>
+    <CircularProgress color="primary" />
+  </Box>
     );
   }
   return (
