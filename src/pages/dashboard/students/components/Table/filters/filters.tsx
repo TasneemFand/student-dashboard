@@ -64,7 +64,7 @@ export const Filters = ({ setFilters }: TProps) => {
       <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
         <img
           alt="filter by"
-          src={"/dashboard/students/assests/dashborad/Filter.svg"}
+          src={"/assests/dashborad/Filter.svg"}
         />
         <Typography
           sx={{

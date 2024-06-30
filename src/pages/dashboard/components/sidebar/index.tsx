@@ -39,13 +39,13 @@ export const Sidebar = () => {
     >
       <img
         width={"60%"}
-        src={"/dashboard/students/assests/dashborad/logo.svg"}
+        src={"/assests/dashborad/logo.svg"}
         alt="logo"
         style={{ paddingLeft: "24px", paddingTop: "20px" }}
       />
       <Divider sx={{ position: "absolute", top: "72px", width: "100%" }} />
       <Box sx={{ display: "flex", borderLeft:  pathnames.includes("students") ? "4px solid #1F7BF4" : "none", alignItems: "center", paddingY: 1, gap: 1, paddingLeft: "24px", marginTop: 5, backgroundColor: pathnames.includes("students") ? "#EEF5F9": "unset" }}>
-        <img src={"/dashboard/students/assests/dashborad/school 1.svg"} />
+        <img src={"/assests/dashborad/school 1.svg"} />
         <NavLink
           to={"/dashboard/students"}
           className="menu"
@@ -62,7 +62,7 @@ export const Sidebar = () => {
           paddingBottom: "20px",
         }}
       >
-        <img src={"/dashboard/students/assests/dashborad/logout.svg"} alt="logout" />
+        <img src={"/assests/dashborad/logout.svg"} alt="logout" />
         <Button
           onClick={handleLogout}
           sx={{

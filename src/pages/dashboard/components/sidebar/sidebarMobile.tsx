@@ -33,7 +33,7 @@ export const SideBarMobile = () => {
       }}
     >
       <img
-        src={"/dashboard/students/assests/dashborad/logo1.svg"}
+        src={"/assests/dashborad/logo1.svg"}
         alt="logo"
         style={{ paddingLeft: "14px", paddingTop: "20px", width: "fit-content" }}
       />
@@ -51,7 +51,7 @@ export const SideBarMobile = () => {
           backgroundColor: pathnames.includes("students") ? "#EEF5F9" : "unset",
         }}
       >
-        <img src={"/dashboard/students/assests/dashborad/school 1.svg"} style={{paddingLeft: "10px"}}/>
+        <img src={"/assests/dashborad/school 1.svg"} style={{paddingLeft: "10px"}}/>
       </Box>
       <Box
         sx={{
@@ -64,7 +64,7 @@ export const SideBarMobile = () => {
       >
         <IconButton onClick={handleLogout}>
           <img
-            src={"/dashboard/students/assests/dashborad/logout.svg"}
+            src={"/assests/dashborad/logout.svg"}
             alt="logout"
           />
         </IconButton>

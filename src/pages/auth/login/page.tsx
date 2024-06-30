@@ -23,7 +23,7 @@ export const Login = () => {
           <LangSelect />
           <img
             loading="lazy"
-            src={"/dashboard/students/assests/login/login1.svg"}
+            src={"/assests/login/login1.svg"}
             alt="login"
             width={"100%"}
           />
@@ -54,7 +54,7 @@ export const Login = () => {
           }}
         >
           <img
-            src={"/dashboard/students/assests/login/loginText.svg"}
+            src={"/assests/login/loginText.svg"}
             alt="login"
             style={{ marginBottom: "24px", width: "80px" }}
           />

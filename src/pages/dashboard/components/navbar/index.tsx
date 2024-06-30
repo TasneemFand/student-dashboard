@@ -22,7 +22,7 @@ export const Navbar = () => {
           >
             William Jacobson
           </Typography>
-          <img src={"/dashboard/students/assests/dashborad/profile.svg"} alt="profile"/>
+          <img src={"/assests/dashborad/profile.svg"} alt="profile"/>
         </Box>
         <LangSelect/>
       </Toolbar>

@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from "react-router-dom";
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
 import { AuthGuard, GuestGuard } from "../auth/guard";
 import { Suspense } from "react";
 import { SplashScreen } from "../components/loading-screen";
@@ -28,6 +28,14 @@ const authJwt = {
 };
 
 export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <AuthGuard>
+        <Navigate to={"dashboard/students"}/>
+      </AuthGuard>
+    )
+  },
   {
     path: "dashboard",
     element: (

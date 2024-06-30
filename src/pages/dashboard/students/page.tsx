@@ -51,7 +51,7 @@ export const StudentsPage = () => {
         ) : (
           <Button
             endIcon={
-              <img src={"/dashboard/students/assests/dashborad/add.svg"} />
+              <img src={"/assests/dashborad/add.svg"} />
             }
             onClick={() => navigate("add")}
             sx={{

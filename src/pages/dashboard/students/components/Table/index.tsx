@@ -180,7 +180,7 @@ const StudentsTable = () => {
             size="small"
             onClick={() => navigate(`delete/${row.original.id}`)}
           >
-            <img src={"/dashboard/students/assests/dashborad/bin.svg"} />
+            <img src={"/assests/dashborad/bin.svg"} />
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit">
@@ -188,7 +188,7 @@ const StudentsTable = () => {
             size="small"
             onClick={() => navigate(`edit/${row.original.id}`)}
           >
-            <img src={"/dashboard/students/assests/dashborad/pencil.svg"} />
+            <img src={"/assests/dashborad/pencil.svg"} />
           </IconButton>
         </Tooltip>
       </Box>
