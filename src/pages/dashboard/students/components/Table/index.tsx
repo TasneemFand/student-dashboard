@@ -27,6 +27,7 @@ const StudentsTable = () => {
   const [filters, setFilters] = useState<TFilter>();
 
   const [data, setData] = useState<TMappedStudent[]>([]);
+  const [localLoading, setLocalLoading] = useState(true);
 
   useEffect(() => {
     if (studentsData) {
@@ -43,7 +44,8 @@ const StudentsTable = () => {
               : item.gender.translations?.[0]?.name || "",
         }))
       );
-    } else setData([]);
+      setLocalLoading(false);
+    }
   }, [currentLang.value, isLoading, studentsData]);
 
   const filterData = (filters: TFilter) => {
@@ -154,7 +156,7 @@ const StudentsTable = () => {
       },
     },
     state: {
-      isLoading,
+      isLoading: isLoading || localLoading,
       sorting,
       showLoadingOverlay: false,
     },
