@@ -12,7 +12,7 @@ export const LangSelect = () => {
   };
 
   return (
-    <Select sx={{width: "117px", height:"38px", borderRadius: "11px"}} value={currentLang.value} onChange={handleChange}>
+    <Select sx={{width: "117px", height:"38px", borderRadius: "11px", backgroundColor: "white"}} value={currentLang.value} onChange={handleChange}>
       <MenuItem value={"en"}>{t('english')}</MenuItem>
       <MenuItem value={"ar"}>{t('arabic')}</MenuItem>
     </Select>

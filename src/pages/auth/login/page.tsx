@@ -38,19 +38,23 @@ export const Login = () => {
           backgroundSize: "cover",
           backgroundPositionY: "center",
           display: "flex",
-          justifyContent: isMobile ? "space-evenly" : "center",
+          justifyContent: "center",
           alignItems: "center",
           flexDirection: isMobile ? "column" : "row",
         }}
       >
-        {isMobile ? <LangSelect /> : null}
+        {isMobile ? (
+          <Box sx={{marginBottom: 4}}>
+            <LangSelect />
+          </Box>
+        ) : null}
         <Box
           sx={{
             backgroundColor: "white",
             paddingY: 5,
             paddingX: 5,
             borderRadius: "6px",
-            maxWidth: "500px",
+            maxWidth: isMobile ? "350px" : "500px",
           }}
         >
           <img
