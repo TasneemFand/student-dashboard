@@ -6,14 +6,14 @@ export type TStudent = {
     lastName?: string;
     birthDate: string;
     city?: string;
-    grade: {
+    grade?: {
         id: string;
         translations?: {
             name: string;
             cultureCode: number[]
         }[]
     };
-    gender: {
+    gender?: {
         id: string;
         translations?: {
             name: string;

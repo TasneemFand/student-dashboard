@@ -8,9 +8,9 @@ export const LoginFormSchema = z.object({
       message: "Name is required ",
     })
     .max(255),
-  password:  z.string()
-  .min(8, { message: "Password must be at least 8 characters long" }) // Minimum length
-  .max(100, { message: "Password must be less than 100 characters" }) // Maximum length
+  password: z.string().trim().min(1, {
+    message: "password is required ",
+  }),
 });
 
 export type TLoginForm = z.infer<typeof LoginFormSchema>;

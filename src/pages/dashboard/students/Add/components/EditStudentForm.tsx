@@ -46,8 +46,8 @@ export const EditStudentForm = ({ handleClose }: TProps) => {
         city: data.city || "",
         country: data.country || "",
         firstName: data.firstName || "",
-        gender: data.gender.id || "",
-        grade: data.grade.id || "",
+        gender: data.gender?.id || "",
+        grade: data.grade?.id || "",
         lastName: data.lastName || "",
         phone: data.phone || "",
         remarks: data.remarks || "",
@@ -74,9 +74,18 @@ export const EditStudentForm = ({ handleClose }: TProps) => {
 
   if (isLoading) {
     return (
-    <Box sx={{width: "600px", maxWidth: "100%", height: "639.2px", alignItems: "flex-start", display: "flex", justifyContent: "center"}}>
-    <CircularProgress color="primary" />
-  </Box>
+      <Box
+        sx={{
+          width: "600px",
+          maxWidth: "100%",
+          height: "639.2px",
+          alignItems: "flex-start",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress color="primary" />
+      </Box>
     );
   }
   return (
@@ -127,10 +136,37 @@ export const EditStudentForm = ({ handleClose }: TProps) => {
               fieldName="grade"
               required={true}
               readOnly={false}
-              displayedValue={{id: data?.grade.id, label: currentLang.value === "en" ? data?.grade.translations?.[0].name :  data?.grade.translations?.[1].name}}
-              otherValue={{id: data?.grade.id === "42fd7157-0b75-4184-a0f8-efceb52bb4a7" ? "5b7d2349-d5e1-406d-a9ee-2b6b03b9bdbf" : "42fd7157-0b75-4184-a0f8-efceb52bb4a7", 
-                label: data?.grade.id === "42fd7157-0b75-4184-a0f8-efceb52bb4a7" ? currentLang.value === "en" ? "Grade 9" : "الصف التاسع" : currentLang.value === "en" ? "Grade 8" : "الصف الثامن"
-              }}
+              displayedValue={
+                data?.grade
+                  ? {
+                      id: data?.grade?.id,
+                      label:
+                        currentLang.value === "en"
+                          ? data?.grade?.translations?.[0].name
+                          : data?.grade?.translations?.[1].name,
+                    }
+                  : undefined
+              }
+              otherValue={
+                data?.grade
+                  ? {
+                      id:
+                        data?.grade?.id ===
+                        "42fd7157-0b75-4184-a0f8-efceb52bb4a7"
+                          ? "5b7d2349-d5e1-406d-a9ee-2b6b03b9bdbf"
+                          : "42fd7157-0b75-4184-a0f8-efceb52bb4a7",
+                      label:
+                        data?.grade?.id ===
+                        "42fd7157-0b75-4184-a0f8-efceb52bb4a7"
+                          ? currentLang.value === "en"
+                            ? "Grade 9"
+                            : "الصف التاسع"
+                          : currentLang.value === "en"
+                          ? "Grade 8"
+                          : "الصف الثامن",
+                    }
+                  : undefined
+              }
               options={[
                 {
                   id: "42fd7157-0b75-4184-a0f8-efceb52bb4a7",
@@ -152,10 +188,37 @@ export const EditStudentForm = ({ handleClose }: TProps) => {
               fieldName="gender"
               required={true}
               readOnly={false}
-              displayedValue={{id: data?.gender.id, label: currentLang.value === "en" ? data?.gender.translations?.[1].name :  data?.gender.translations?.[0].name}}
-              otherValue={{id: data?.gender.id === "be9f259f-ca22-4184-bb05-0fd4c0bd9e87" ? "408a14d0-fb95-4df0-a0d4-9042dc52ad4f" : "be9f259f-ca22-4184-bb05-0fd4c0bd9e87", 
-                label: data?.grade.id === "be9f259f-ca22-4184-bb05-0fd4c0bd9e87" ? currentLang.value === "en" ? "male" : "ذكر" : currentLang.value === "en" ? "female" : "أنثى"
-              }}
+              displayedValue={
+                data?.gender
+                  ? {
+                      id: data?.gender.id,
+                      label:
+                        currentLang.value === "en"
+                          ? data?.gender.translations?.[1].name
+                          : data?.gender.translations?.[0].name,
+                    }
+                  : undefined
+              }
+              otherValue={
+                data?.gender
+                  ? {
+                      id:
+                        data?.gender.id ===
+                        "be9f259f-ca22-4184-bb05-0fd4c0bd9e87"
+                          ? "408a14d0-fb95-4df0-a0d4-9042dc52ad4f"
+                          : "be9f259f-ca22-4184-bb05-0fd4c0bd9e87",
+                      label:
+                        data?.gender.id ===
+                        "be9f259f-ca22-4184-bb05-0fd4c0bd9e87"
+                          ? currentLang.value === "en"
+                            ? "male"
+                            : "ذكر"
+                          : currentLang.value === "en"
+                          ? "female"
+                          : "أنثى",
+                    }
+                  : undefined
+              }
               options={[
                 {
                   id: "be9f259f-ca22-4184-bb05-0fd4c0bd9e87",

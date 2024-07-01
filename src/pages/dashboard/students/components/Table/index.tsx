@@ -32,17 +32,19 @@ const StudentsTable = () => {
   useEffect(() => {
     if (studentsData) {
       setData(
-        studentsData.map((item) => ({
-          ...item,
-          grade:
-            currentLang.value === "en"
-              ? item.grade.translations?.[0]?.name || ""
-              : item.grade.translations?.[1]?.name || "",
-          gender:
-            currentLang.value === "en"
-              ? item.gender.translations?.[1]?.name || ""
-              : item.gender.translations?.[0]?.name || "",
-        }))
+        studentsData.map((item) => {
+          return {
+            ...item,
+            grade:
+              currentLang.value === "en"
+                ? item.grade?.translations?.[0]?.name || ""
+                : item.grade?.translations?.[1]?.name || "",
+            gender:
+              currentLang.value === "en"
+                ? item.gender?.translations?.[1]?.name || ""
+                : item.gender?.translations?.[0]?.name || "",
+          };
+        })
       );
       setLocalLoading(false);
     }
@@ -53,18 +55,17 @@ const StudentsTable = () => {
       ...item,
       grade:
         currentLang.value === "en"
-          ? item.grade.translations?.[0]?.name || ""
-          : item.grade.translations?.[1]?.name || "",
+          ? item.grade?.translations?.[0]?.name || ""
+          : item.grade?.translations?.[1]?.name || "",
       gender:
         currentLang.value === "en"
-          ? item.gender.translations?.[1]?.name || ""
-          : item.gender.translations?.[0]?.name || "",
-    }))
+          ? item.gender?.translations?.[1]?.name || ""
+          : item.gender?.translations?.[0]?.name || "",
+    }));
     if (filters?.date?.value) {
       const f = allData?.filter((item) => {
         const dateValue = dayjs(new Date(item.birthDate));
         let condition = dateValue.isSame(filters?.date?.value, "day");
-        console.log(filters?.date?.op)
         switch (filters?.date?.op) {
           case "equal":
             condition = dateValue.isSame(filters?.date?.value, "day");
@@ -77,10 +78,10 @@ const StudentsTable = () => {
             break;
         }
         const nameCondition = filters?.searchByName
-          ? item.firstName?.includes(filters.searchByName) ||
-            item.lastName?.includes(filters.searchByName)
+          ? item.firstName?.toLowerCase().includes(filters.searchByName.toLowerCase()) ||
+            item.lastName?.toLowerCase().includes(filters.searchByName.toLowerCase())
           : true;
-        
+
         return nameCondition && condition;
       });
       return f;
@@ -105,8 +106,8 @@ const StudentsTable = () => {
         }
         return (
           condition &&
-          (item.firstName?.includes(filters.searchByName!) ||
-            item.lastName?.includes(filters.searchByName!))
+          (item.firstName?.toLowerCase().includes(filters.searchByName!.toLowerCase()) ||
+            item.lastName?.toLowerCase().includes(filters.searchByName!.toLowerCase()))
         );
       });
     }
@@ -115,12 +116,12 @@ const StudentsTable = () => {
       ...item,
       grade:
         currentLang.value === "en"
-          ? item.grade.translations?.[0]?.name || ""
-          : item.grade.translations?.[1]?.name || "",
+          ? item.grade?.translations?.[0]?.name || ""
+          : item.grade?.translations?.[1]?.name || "",
       gender:
         currentLang.value === "en"
-          ? item.gender.translations?.[1]?.name || ""
-          : item.gender.translations?.[0]?.name || "",
+          ? item.gender?.translations?.[1]?.name || ""
+          : item.gender?.translations?.[0]?.name || "",
     }));
   };
 
